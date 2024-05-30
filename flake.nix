@@ -16,10 +16,12 @@
 
   flake-utils.lib.eachDefaultSystem (system:
     let
-      overlays = import ./overlays inputs;
-
       # Nix packages
-      pkgs = import nixpkgs { inherit system overlays; };
+      pkgs = import nixpkgs { inherit system; };
+
+      jenkins-plugin-manager = pkgs.callPackage ./pkgs/jenkins-plugin-manager { };
+
+      jenkins-update-center = pkgs.callPackage ./pkgs/jenkins-update-center { };
 
       # Packages to include in both the dev shell and the Docker image
       packages = with pkgs; [
@@ -41,6 +43,10 @@
         created = "now";
         contents = packages;
       };
+
+      packages.jenkins-plugin-manager = jenkins-plugin-manager;
+
+      packages.jenkins-update-center = jenkins-update-center;
     }
   );
 }
