@@ -1,0 +1,2 @@
+# ignore Nix' result file or directory
+result
