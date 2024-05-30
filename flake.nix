@@ -40,7 +40,7 @@
 
       defaultPackage = pkgs.dockerTools.buildLayeredImage {
         name = "jenkins-plugin-tools";
-        created = "now";
+        created = builtins.substring 0 8 self.lastModifiedDate;
         contents = packages;
       };
 
