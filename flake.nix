@@ -36,13 +36,10 @@
         packages = packages;
       };
 
-      defaultPackage = pkgs.dockerTools.buildImage {
+      defaultPackage = pkgs.dockerTools.buildLayeredImage {
         name = "jenkins-plugin-tools";
-        copyToRoot = pkgs.buildEnv {
-          name = "packages";
-          paths = packages;
-          pathsToLink = [ "/bin" ];
-        };
+        created = "now";
+        contents = packages;
       };
     }
   );
