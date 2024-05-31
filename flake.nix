@@ -26,6 +26,7 @@
       # Packages to include in both the dev shell and the Docker image
       packages = with pkgs; [
         bash
+        coreutils
         curl
         jenkins-plugin-manager
         jenkins-update-center
