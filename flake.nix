@@ -28,6 +28,7 @@
         bash
         coreutils
         curl
+        gnused
         jenkins-plugin-manager
         jenkins-update-center
         jq
